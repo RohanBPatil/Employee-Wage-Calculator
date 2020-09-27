@@ -11,20 +11,22 @@ public class empWageCalculator {
 				//variables
 				int empHrs = 0;
 				int empWage = 0;
-				double empCheck = Math.floor(Math.random() * 10) % 3;
-				
-				if (empCheck == is_full_time) {
-					empHrs = 8;
-				}
-				else if (empCheck == is_part_time) {
-					empHrs = 8;
-				}
-				else {
-					empHrs = 0;
-				}
-				
 				//computation
+				int empCheck = (int)Math.floor(Math.random() * 10) % 3;
+				
+				switch(empCheck) {
+				case 1:
+					empHrs = 8;
+					break;
+				case 2:
+					empHrs = 8;;
+					break;
+				default:
+					empHrs = 0;
+					break;
+				}
 				empWage = emp_wage_per_hr * empHrs;
 				System.out.println("Employee Wage : "+empWage);
+				
 	}
 }
