@@ -28,6 +28,7 @@ public class EmpWageBuilder implements InterfaceToCalculateWage{
 		int total_empHrs = 0;
 		int total_working_days = 0;
 		int total_empWage = 0;
+		List<Integer> dailyWages = new ArrayList<Integer>();
 		
 		//computation
 		while(total_empHrs <= com.max_hrs_in_month && total_working_days < com.max_working_days) {
@@ -46,13 +47,14 @@ public class EmpWageBuilder implements InterfaceToCalculateWage{
 			}
 			total_empHrs += empHrs;
 			System.out.println("Day : "+total_working_days+" Emp Hrs : "+empHrs );
+			dailyWages.add(empHrs * com.emp_wage_per_hr);
 		}
 		
 		/*
 		if(total_empHrs >= max_hrs_in_month)
 			total_empHrs = max_hrs_in_month;															//if total hrs exceeds max hrs per month then computing for max hrs per month
 		*/
-		
+		com.setDailyEmpWage(dailyWages);
 		total_empWage = total_empHrs * com.emp_wage_per_hr;
 		return total_empWage;
 	}
