@@ -30,6 +30,7 @@ public class CompanyEmpWage {
 		for(int i = 0; i < dailyWages.size(); i++) {
 			str = str + " " + dailyWages.get(i);
 		}
+		str += "\n";
 		return str;
 	}
 }

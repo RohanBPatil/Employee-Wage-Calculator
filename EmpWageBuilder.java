@@ -59,13 +59,25 @@ public class EmpWageBuilder implements InterfaceToCalculateWage{
 		return total_empWage;
 	}
 	
+	public int getTotalWage(String companyName) {
+		int totWage = 0;
+		for(int i = 0; i < companyEmpWageList.size(); i++) {
+			if(companyEmpWageList.get(i).company.equalsIgnoreCase(companyName)) {
+				totWage = companyEmpWageList.get(i).total_empWage;
+			}
+		}
+		return totWage;
+	}
+	
 	
 	public static void main(String[] args) {
-		System.out.println("Welcome To Employee Wage Calculator");
+		System.out.println("Welcome To Employee Wage Calculator\n");
 		
 		InterfaceToCalculateWage ewb = new EmpWageBuilder();
 		ewb.addCompanyEmpWage("DMart", 20, 2, 10);
 		ewb.addCompanyEmpWage("Reliance", 10, 4, 20);
-		ewb.computeEmpWage();	
+		ewb.computeEmpWage();
+		System.out.println("\nTotal wage for DMart company is "+ewb.getTotalWage("DMart"));
+		
 	}
 }
