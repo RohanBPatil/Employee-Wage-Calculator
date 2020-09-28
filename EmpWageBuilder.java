@@ -1,6 +1,6 @@
 package empWageCalculator;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements InterfaceToCalculateWage{
 	public static final int is_part_time = 1;
 	public static final int is_full_time = 2;
 	
@@ -12,12 +12,12 @@ public class EmpWageBuilder {
 		companyEmpWageArray = new CompanyEmpWage[5];
 	}
 	
-	private void addCompanyEmpWage(String company, int emp_wage_per_hr, int max_working_days, int max_hrs_in_month) {
+	public void addCompanyEmpWage(String company, int emp_wage_per_hr, int max_working_days, int max_hrs_in_month) {
 		companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, emp_wage_per_hr, max_working_days, max_hrs_in_month);
 		numOfCompany++;
 	}
 	
-	private void computeEmpWage() {
+	public void computeEmpWage() {
 		for(int i = 0; i < numOfCompany; i++) {
 			companyEmpWageArray[i].setTotalEmpWage(calculateEmpWage(companyEmpWageArray[i]));
 			System.out.println(companyEmpWageArray[i]);
@@ -63,7 +63,7 @@ public class EmpWageBuilder {
 	public static void main(String[] args) {
 		System.out.println("Welcome To Employee Wage Calculator");
 		
-		EmpWageBuilder ewb = new EmpWageBuilder();
+		InterfaceToCalculateWage ewb = new EmpWageBuilder();
 		ewb.addCompanyEmpWage("DMart", 20, 2, 10);
 		ewb.addCompanyEmpWage("Reliance", 10, 4, 20);
 		ewb.computeEmpWage();	
