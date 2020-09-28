@@ -1,26 +1,24 @@
 package empWageCalculator;
+import java.util.*;
 
 public class EmpWageBuilder implements InterfaceToCalculateWage{
 	public static final int is_part_time = 1;
 	public static final int is_full_time = 2;
 	
-	private int numOfCompany = 0;
-	private CompanyEmpWage[] companyEmpWageArray;
-	
+	private List<CompanyEmpWage> companyEmpWageList;																		//creating list	
 	
 	public EmpWageBuilder() {
-		companyEmpWageArray = new CompanyEmpWage[5];
+		companyEmpWageList = new ArrayList<CompanyEmpWage>();																//initiating list
 	}
 	
 	public void addCompanyEmpWage(String company, int emp_wage_per_hr, int max_working_days, int max_hrs_in_month) {
-		companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, emp_wage_per_hr, max_working_days, max_hrs_in_month);
-		numOfCompany++;
+		companyEmpWageList.add(new CompanyEmpWage(company, emp_wage_per_hr, max_working_days, max_hrs_in_month));			//creating CompanyEmpWage obj and adding it to list
 	}
 	
-	public void computeEmpWage() {
-		for(int i = 0; i < numOfCompany; i++) {
-			companyEmpWageArray[i].setTotalEmpWage(calculateEmpWage(companyEmpWageArray[i]));
-			System.out.println(companyEmpWageArray[i]);
+	public void computeEmpWage() {																							//calling method to calculate wage and print
+		for(int i = 0; i < companyEmpWageList.size(); i++) {
+			companyEmpWageList.get(i).setTotalEmpWage(calculateEmpWage(companyEmpWageList.get(i)));
+			System.out.println(companyEmpWageList.get(i));
 		}
 	}
 	//Method to calculate employee wage
